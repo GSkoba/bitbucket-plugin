@@ -1,0 +1,41 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="dev.fest"/>
+
+    <repository-hook key="logging-hook" name="Logging Post Hook"
+                     i18n-name-key="hook.guide.logginghook.name"
+                     class="bitbucket.dev.fest.demo.impl.LoggingPostRepositoryHook">
+        <description key="hook.guide.logginghook.description" />
+        <icon>images/test.png</icon>
+    </repository-hook>
+
+    <repository-merge-check key="test" class="bean:testMergeCheck" configurable="false"/>
+
+    <web-item key="test-extension" section="bitbucket.ui.pullrequest.overview.summary">
+        <label key="test-extension"/>
+    </web-item>
+    <web-resource key="test-extension-resources">
+        <resource type="download" name="test.js" location="js/test.js"/>
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <context>bitbucket.ui.pullrequest.overview.summary</context>
+    </web-resource>
+    <!-- add our web resources -->
+    <web-resource key="dev.fest-resources" name="dev.fest Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+
+        <resource type="download" name="dev.fest.css" location="/css/dev.fest.css"/>
+        <resource type="download" name="dev.fest.js" location="/js/dev.fest.js"/>
+        <resource type="download" name="images/" location="/images"/>
+
+        <context>dev.fest</context>
+    </web-resource>
+
+</atlassian-plugin>

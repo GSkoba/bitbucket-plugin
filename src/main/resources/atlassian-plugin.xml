@@ -22,6 +22,14 @@
     <web-item key="test-extension" section="bitbucket.ui.pullrequest.overview.summary">
         <label key="test-extension"/>
     </web-item>
+
+    <client-web-item key="myWebItem" name="A Web Item" section="web-item-location" weight="100">
+        <context-provider class="com.mycompany.example.plugin.PrivateWidgetsContextProvider" />
+        <client-condition>WidgetManager.hasWidgets</client-condition>
+        <label>Repository widgets</label>
+        <link>/plugins/servlet/widgets</link>
+    </client-web-item>
+
     <web-resource key="test-extension-resources">
         <resource type="download" name="test.js" location="js/test.js"/>
         <dependency>com.atlassian.auiplugin:ajs</dependency>

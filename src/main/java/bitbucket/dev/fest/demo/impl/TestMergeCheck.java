@@ -12,6 +12,6 @@ public class TestMergeCheck implements RepositoryMergeCheck {
     @Override
     public RepositoryHookResult preUpdate(PreRepositoryHookContext context,
                                           PullRequestMergeHookRequest request) {
-        return RepositoryHookResult.rejected("DevFest", "You shell not pass!!!");
+        return RepositoryHookResult.rejected("DevFest", "You shall not pass!!!");
     }
 }
